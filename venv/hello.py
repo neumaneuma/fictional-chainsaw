@@ -90,7 +90,7 @@ def login():
     return render_template('login.html', error=error)
 
 
-# To access cookies you can use the cookies attribute. To set cookies you can use the set_cookie method of response objects. The cookies attribute of request objects is a dictionary with all the cookies the client transmits. If you want to use sessions, do not use the cookies directly but instead use the Sessions in Flask that add some security on top of cookies for you.
+# To access cookies you can use the cookies attribute. To set cookies you can use the set_cookie method of response objects. The cookies attribute of request objects is a dictionary with all the cookies the client transmits.
 # Reading cookies:
 @app.route('/')
 def index():
@@ -113,13 +113,13 @@ def index():
     return redirect(url_for('login'))
 
 
+# This is a rather pointless example because a user will be redirected from the index to a page they cannot access (401 means access denied) but it shows how that works.
 @app.route('/login')
 def login():
     abort(401)
     this_is_never_executed()
 
 
-# This is a rather pointless example because a user will be redirected from the index to a page they cannot access (401 means access denied) but it shows how that works.
 # By default a black and white error page is shown for each error code. If you want to customize the error page, you can use the errorhandler() decorator:
 @app.errorhandler(404)
 def page_not_found(error):
@@ -140,6 +140,7 @@ def not_found(error):
     resp = make_response(render_template('error.html'), 404)
     resp.headers['X-Something'] = 'A value'
     return resp
+
 
 # The attached logger is a standard logging Logger, so
 app.logger.debug('A value for debugging')
