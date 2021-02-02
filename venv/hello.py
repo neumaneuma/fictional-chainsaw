@@ -140,3 +140,8 @@ def not_found(error):
     resp = make_response(render_template('error.html'), 404)
     resp.headers['X-Something'] = 'A value'
     return resp
+
+# The attached logger is a standard logging Logger, so
+app.logger.debug('A value for debugging')
+app.logger.warning('A warning occurred (%d apples)', 42)
+app.logger.error('An error occurred')
